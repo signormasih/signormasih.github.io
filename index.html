@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>علی رضاهاشمی - Backend Developer & DevOps Engineer</title>
+    <title>ali Rezahashemi - Backend,Frontend, mobile Developer & DevOps & Problem solver</title>
     <style>
         * {
             margin: 0;
@@ -16,6 +16,7 @@
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
             min-height: 100vh;
             padding: 40px 20px;
+            transition: direction 0.3s;
         }
 
         .container {
@@ -119,6 +120,11 @@
             border-right: 5px solid #7e22ce;
         }
 
+        html[lang="en"] .about {
+            border-right: none;
+            border-left: 5px solid #7e22ce;
+        }
+
         .highlight-box {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -146,11 +152,21 @@
             position: relative;
         }
 
+        html[lang="en"] .highlight-box ul li {
+            padding-right: 0;
+            padding-left: 30px;
+        }
+
         .highlight-box ul li::before {
             content: '⚡';
             position: absolute;
             right: 0;
             font-size: 1.2em;
+        }
+
+        html[lang="en"] .highlight-box ul li::before {
+            right: auto;
+            left: 0;
         }
 
         .skills {
@@ -262,6 +278,11 @@
             color: rgba(255,255,255,0.9);
         }
 
+        html[lang="en"] .tech-category ul li {
+            padding-right: 0;
+            padding-left: 20px;
+        }
+
         .tech-category ul li::before {
             content: '▸';
             position: absolute;
@@ -269,157 +290,274 @@
             color: #fbbf24;
         }
 
+        html[lang="en"] .tech-category ul li::before {
+            right: auto;
+            left: 0;
+        }
+
+        /* Language Toggle Float Button */
+        .lang-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        html[lang="en"] .lang-toggle {
+            left: auto;
+            right: 30px;
+        }
+
+        .lang-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #1e3c72 0%, #7e22ce 100%);
+            color: white;
+            box-shadow: 0 6px 25px rgba(126, 34, 206, 0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lang-btn:hover {
+            transform: scale(1.12) rotate(5deg);
+            box-shadow: 0 10px 35px rgba(126, 34, 206, 0.7);
+        }
+
+        .lang-btn:active {
+            transform: scale(0.95);
+        }
+
+        .lang-label {
+            background: rgba(30, 60, 114, 0.85);
+            color: white;
+            font-size: 0.72em;
+            padding: 10px;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* Hidden content by language */
+        .fa-content { display: block; }
+        .en-content { display: none; }
+
+        html[lang="en"] .fa-content { display: none; }
+        html[lang="en"] .en-content { display: block; }
+
+        .fa-inline { display: inline; }
+        .en-inline { display: none; }
+
+        html[lang="en"] .fa-inline { display: none; }
+        html[lang="en"] .en-inline { display: inline; }
+
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2em;
-            }
-            
-            .header p {
-                font-size: 1.1em;
-            }
-            
-            .content {
-                padding: 30px 20px;
-            }
-            
-            .skills {
-                grid-template-columns: 1fr;
-            }
-
-            .expertise-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tech-categories {
-                grid-template-columns: 1fr;
-            }
+            .header h1 { font-size: 2.2em; }
+            .header p { font-size: 1.1em; }
+            .content { padding: 30px 20px; }
+            .skills { grid-template-columns: 1fr; }
+            .expertise-grid { grid-template-columns: 1fr; }
+            .tech-categories { grid-template-columns: 1fr; }
+            .lang-toggle { bottom: 20px; left: 20px; }
+            html[lang="en"] .lang-toggle { left: auto; right: 20px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- HEADER -->
         <div class="header">
-            <h1>علی رضاهاشمی</h1>
-            <p>Backend Developer | DevOps Engineer | Full-Stack Problem Solver</p>
+            <h1>
+                <span class="fa-inline">علی رضاهاشمی</span>
+                <span class="fa-inline">(SysArdent)</span>
+                <span class="en-inline">Ali Rezahashemi</span>
+                <span class="en-inline">(SysArdent)</span>
+            </h1>
+            <p>Backend, Frontend, mobile Developer | DevOps Engineer | Full-Stack Problem Solver</p>
             <div class="contact-info">
-                <a href="tel:+989018842331">📱 09018842331</a>
+                <a href="tel:+989018842331">📱 09904395188</a>
+                <a href="https://www.youtube.com/@sysardent" target="_blank" rel="noopener">▶️ YouTube @sysardent</a>
+                <a href="https://www.instagram.com/sysardent" target="_blank" rel="noopener">📸 Instagram @sysardent</a>
+                <a href="https://t.me/sysardent" target="_blank" rel="noopener">📨 telegram @sysardent</a>
             </div>
         </div>
 
         <div class="content">
+            <!-- ABOUT -->
             <div class="section">
-                <h2>درباره من</h2>
+                <h2>
+                    <span class="fa-inline">درباره من</span>
+                    <span class="en-inline">About Me</span>
+                </h2>
                 <p class="about">
-                   من توانایی بالایی در یادگیری سریع زبان‌ها و تکنولوژی‌های جدید دارم و می‌توانم تمامی مراحل اجرای یک پروژه، از طراحی و پیاده‌سازی تا استقرار نهایی را به‌صورت کامل انجام دهم.
-در فرآیند توسعه، مسئولیت دیباگ، پشتیبانی و بهبود عملکرد پروژه را نیز بر عهده می‌گیرم.
-با تحلیل دقیق نیازها و ساختار پروژه، همواره سعی می‌کنم بهترین و بهینه‌ترین راه‌حل‌ها را ارائه دهم.
+                    <span class="fa-content">
+                        من توانایی بالایی در یادگیری سریع زبان‌ها و تکنولوژی‌های جدید دارم و می‌توانم تمامی مراحل اجرای یک پروژه، از طراحی و پیاده‌سازی تا استقرار نهایی را به‌صورت کامل انجام دهم.
+                        در فرآیند توسعه، مسئولیت دیباگ، پشتیبانی و بهبود عملکرد پروژه را نیز بر عهده می‌گیرم.
+                        با تحلیل دقیق نیازها و ساختار پروژه، همواره سعی می‌کنم بهترین و بهینه‌ترین راه‌حل‌ها را ارائه دهم.
+                    </span>
+                    <span class="en-content">
+                        I have a strong ability to quickly learn new languages and technologies, and I can handle all stages of a project — from design and implementation to final deployment. Throughout the development process, I also take responsibility for debugging, support, and performance improvements. By carefully analyzing project requirements and structure, I always strive to deliver the best and most optimal solutions.
+                    </span>
                 </p>
             </div>
 
+            <!-- KEY EXPERTISE -->
             <div class="highlight-box">
-                <h3>تخصص‌های کلیدی</h3>
+                <h3>
+                    <span class="fa-inline">تخصص‌های کلیدی</span>
+                    <span class="en-inline">Key Expertise</span>
+                </h3>
                 <ul>
-                    <li>طراحی و توسعه RESTful API های مقیاس‌پذیر با Django & Django REST Framework</li>
-                    <li>پیاده‌سازی Real-Time Systems با WebSocket، Socket.IO و Django Channels</li>
-                    <li>DevOps و مدیریت زیرساخت با Docker، Linux Administration (LPIC 1/2)</li>
-                    <li>توسعه Full-Stack با تسلط بر Python، Node.js، PHP و Dart/Flutter</li>
-                    <li>امنیت سایبری و Penetration Testing (CEH Certified)</li>
-                    <li>بهینه‌سازی Database با PostgreSQL، MySQL و Redis</li>
+                    <li>
+                        <span class="fa-inline">طراحی و توسعه RESTful API های مقیاس‌پذیر با Django & Django REST Framework</span>
+                        <span class="en-inline">Designing & developing scalable RESTful APIs with Django & Django REST Framework</span>
+                    </li>
+                    <li>
+                        <span class="fa-inline">پیاده‌سازی Real-Time Systems با WebSocket، Socket.IO و Django Channels</span>
+                        <span class="en-inline">Implementing Real-Time Systems with WebSocket, Socket.IO & Django Channels</span>
+                    </li>
+                    <li>
+                        <span class="fa-inline">DevOps و مدیریت زیرساخت با Docker، Linux Administration (LPIC 1/2)</span>
+                        <span class="en-inline">DevOps & infrastructure management with Docker, Linux Administration (LPIC 1/2)</span>
+                    </li>
+                    <li>
+                        <span class="fa-inline">توسعه Full-Stack با تسلط بر Python، Node.js، PHP و Dart/Flutter</span>
+                        <span class="en-inline">Full-Stack development proficient in Python, Node.js, PHP & Dart/Flutter</span>
+                    </li>
+                    <li>
+                        <span class="fa-inline">امنیت سایبری و Penetration Testing (CEH Certified)</span>
+                        <span class="en-inline">Cybersecurity & Penetration Testing (CEH Certified)</span>
+                    </li>
+                    <li>
+                        <span class="fa-inline">بهینه‌سازی Database با PostgreSQL، MySQL و Redis</span>
+                        <span class="en-inline">Database optimization with PostgreSQL, MySQL & Redis</span>
+                    </li>
                 </ul>
             </div>
 
+            <!-- EXPERTISE AREAS -->
             <div class="section">
-                <h2>حوزه‌های تخصصی</h2>
+                <h2>
+                    <span class="fa-inline">حوزه‌های تخصصی</span>
+                    <span class="en-inline">Areas of Expertise</span>
+                </h2>
                 <div class="expertise-grid">
                     <div class="expertise-card">
                         <h3>Backend Development</h3>
                         <p>
-                            تسلط کامل بر فریمورک‌های Django، Flask، Express.js و Symfony. 
-                            طراحی معماری‌های Microservices، پیاده‌سازی Authentication & Authorization پیشرفته، 
-                            و بهینه‌سازی Query های پیچیده برای عملکرد بهتر.
+                            <span class="fa-content">
+                                تسلط کامل بر فریمورک‌های Django، Flask، Express.js و Symfony.
+                                طراحی معماری‌های Microservices، پیاده‌سازی Authentication & Authorization پیشرفته،
+                                و بهینه‌سازی Query های پیچیده برای عملکرد بهتر.
+                            </span>
+                            <span class="en-content">
+                                Full mastery of Django, Flask, Express.js & Symfony frameworks. Designing Microservices architectures, implementing advanced Authentication & Authorization, and optimizing complex queries for better performance.
+                            </span>
                         </p>
                     </div>
 
                     <div class="expertise-card">
                         <h3>Real-Time Systems</h3>
                         <p>
-                            تجربه گسترده در ساخت سیستم‌های Real-Time با WebSocket، Socket Programming و Django Channels.
-                            پیاده‌سازی Chat Systems، Live Notifications، Collaborative Tools و Dashboard های زنده
-                            با قابلیت مقیاس‌پذیری بالا.
+                            <span class="fa-content">
+                                تجربه گسترده در ساخت سیستم‌های Real-Time با WebSocket، Socket Programming و Django Channels.
+                                پیاده‌سازی Chat Systems، Live Notifications، Collaborative Tools و Dashboard های زنده
+                                با قابلیت مقیاس‌پذیری بالا.
+                            </span>
+                            <span class="en-content">
+                                Extensive experience building Real-Time systems with WebSocket, Socket Programming & Django Channels. Implementing Chat Systems, Live Notifications, Collaborative Tools & live Dashboards with high scalability.
+                            </span>
                         </p>
                     </div>
 
                     <div class="expertise-card">
                         <h3>DevOps & Infrastructure</h3>
                         <p>
-                            مدیریت کامل چرخه CI/CD، Containerization با Docker، 
-                            Linux System Administration و Network Configuration.
-                            تجربه در Setup و مدیریت Production Servers، Load Balancing و Performance Tuning.
+                            <span class="fa-content">
+                                مدیریت کامل چرخه CI/CD، Containerization با Docker،
+                                Linux System Administration و Network Configuration.
+                                تجربه در Setup و مدیریت Production Servers، Load Balancing و Performance Tuning.
+                            </span>
+                            <span class="en-content">
+                                Full CI/CD lifecycle management, Containerization with Docker, Linux System Administration & Network Configuration. Experience in setting up and managing Production Servers, Load Balancing & Performance Tuning.
+                            </span>
                         </p>
                     </div>
 
                     <div class="expertise-card">
                         <h3>Database & Caching</h3>
                         <p>
-                            طراحی Schema های بهینه، Query Optimization، Indexing Strategies و Database Replication.
-                            پیاده‌سازی Caching Layers با Redis، Session Management و 
-                            استفاده از Database Transactions برای Data Integrity.
+                            <span class="fa-content">
+                                طراحی Schema های بهینه، Query Optimization، Indexing Strategies و Database Replication.
+                                پیاده‌سازی Caching Layers با Redis، Session Management و
+                                استفاده از Database Transactions برای Data Integrity.
+                            </span>
+                            <span class="en-content">
+                                Designing optimized schemas, Query Optimization, Indexing Strategies & Database Replication. Implementing Caching Layers with Redis, Session Management & leveraging Database Transactions for Data Integrity.
+                            </span>
                         </p>
                     </div>
 
                     <div class="expertise-card">
                         <h3>API Design & Integration</h3>
                         <p>
-                            طراحی RESTful API های استاندارد با Django REST Framework، 
-                            پیاده‌سازی API Versioning، Rate Limiting، Documentation با Swagger،
-                            و Integration با Third-Party Services و Payment Gateways.
+                            <span class="fa-content">
+                                طراحی RESTful API های استاندارد با Django REST Framework،
+                                پیاده‌سازی API Versioning، Rate Limiting، Documentation با Swagger،
+                                و Integration با Third-Party Services و Payment Gateways.
+                            </span>
+                            <span class="en-content">
+                                Designing standard RESTful APIs with Django REST Framework, implementing API Versioning, Rate Limiting, Swagger Documentation & integration with Third-Party Services and Payment Gateways.
+                            </span>
                         </p>
                     </div>
 
                     <div class="expertise-card">
                         <h3>Security & Best Practices</h3>
                         <p>
-                            اعمال Security Best Practices، OWASP Top 10، Input Validation، 
-                            SQL Injection Prevention، XSS Protection و Secure Authentication.
-                            تجربه Penetration Testing و Vulnerability Assessment با گواهینامه CEH.
+                            <span class="fa-content">
+                                اعمال Security Best Practices، OWASP Top 10، Input Validation،
+                                SQL Injection Prevention، XSS Protection و Secure Authentication.
+                                تجربه Penetration Testing و Vulnerability Assessment با گواهینامه CEH.
+                            </span>
+                            <span class="en-content">
+                                Applying Security Best Practices, OWASP Top 10, Input Validation, SQL Injection Prevention, XSS Protection & Secure Authentication. Penetration Testing & Vulnerability Assessment experience with CEH certification.
+                            </span>
                         </p>
                     </div>
                 </div>
             </div>
 
+            <!-- TECH STACK -->
             <div class="tech-stack">
-                <h3>✨ پشته فناوری</h3>
+                <h3>✨ <span class="fa-inline">پشته فناوری</span><span class="en-inline">Tech Stack</span></h3>
                 <div class="tech-categories">
                     <div class="tech-category">
                         <h4>Backend Frameworks</h4>
@@ -471,7 +609,7 @@
                             <li>Docker & Containerization</li>
                             <li>Git & GitHub</li>
                             <li>Linux (LPIC 1 & 2)</li>
-                            <li>server Admin</li>
+                            <li>Server Admin</li>
                             <li>Server Management</li>
                         </ul>
                     </div>
@@ -489,8 +627,12 @@
                 </div>
             </div>
 
+            <!-- SKILLS -->
             <div class="section">
-                <h2>مهارت‌های فنی</h2>
+                <h2>
+                    <span class="fa-inline">مهارت‌های فنی</span>
+                    <span class="en-inline">Technical Skills</span>
+                </h2>
                 <div class="skills">
                     <div class="skill-item">Python</div>
                     <div class="skill-item">Django</div>
@@ -520,5 +662,30 @@
             </div>
         </div>
     </div>
+
+    <!-- FLOATING LANGUAGE TOGGLE -->
+    <div class="lang-toggle">
+        <button class="lang-btn" onclick="toggleLang()" title="Switch Language">
+            <span class="fa-inline">EN</span>
+            <span class="en-inline">FA</span>
+        </button>
+        <span class="lang-label">
+            <span class="fa-inline">تغییر زبان</span>
+            <span class="en-inline">Change Language</span>
+        </span>
+    </div>
+
+    <script>
+        function toggleLang() {
+            const html = document.documentElement;
+            if (html.lang === 'fa') {
+                html.lang = 'en';
+                html.dir = 'ltr';
+            } else {
+                html.lang = 'fa';
+                html.dir = 'rtl';
+            }
+        }
+    </script>
 </body>
 </html>
